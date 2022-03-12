@@ -1,5 +1,7 @@
 ﻿@page "/regpage"
 
+@using Blazor_kai.Data
+@inject HomeController Controller
 
 <style media="screen">
     *,
@@ -17,15 +19,17 @@ form{
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
+    top: 200%;
     left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
+
 form *{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
@@ -60,7 +64,7 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
-button{
+button.btn{
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
@@ -71,19 +75,7 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
-.back{
-    display: block;
-    height: 50px;
-    width: 200px;
-    background-color: #A9A9A9;
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
 </style>
-<button class="back" type="button" onclick="history.back();">На главную </button>
 
 <form>
     <h3>Регистрация</h3>
@@ -100,7 +92,7 @@ button{
     <label for="repeatpassword">Повторите пароль</label>
     <input type="password" @bind="@repeatpassword" placeholder="Password" id="repeatpassword">
 
-    <button id="reg_btn" @onclick="Registration">Зарегистрироваться</button>
+    <button class="btn" id="reg_btn" @onclick="Registration">Зарегистрироваться</button>
 </form>
 
 @code {

@@ -1,9 +1,54 @@
 ﻿@page "/"
 
 <PageTitle>Index</PageTitle>
+<style>
+body{
+    background-color: #080710;
+}
 
-<h1>Hello, world!</h1>
+a.button {
+  display: inline-block;
+  color: #d7d7d7;
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #37373e;
+  border-radius: 6px;
+  background-color: #37373e;
+  transition: 0.2s;
+} 
+a.button:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white; 
+}
+a.button:active {
+    background-color: rgba(255,255,255,0.25);
+    color: white; 
+}
 
-Welcome to your new app.
+.center{
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
+form h3{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    letter-spacing: 0.5px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+</style>
+<h3 class="color=white">
+    Вы не вошли в аккаунт!
+</h3>
+<div class="container center display=flex">
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<a class="button" href="/authpage" >Вход</a>
+<a class="button" href="/regpage" >Регистрация</a>
+
+</div>

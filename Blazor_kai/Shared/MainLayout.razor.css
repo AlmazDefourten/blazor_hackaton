@@ -8,8 +8,12 @@ main {
     flex: 1;
 }
 
+body {
+    background-color: #080710;
+}
+
 .sidebar {
-    background-color: #DCDCDC;
+    background-color: #37373e;
 }
 
 .top-row {
@@ -35,6 +39,7 @@ main {
 @media () {
     .page {
         flex-direction: row;
+
     }
 
     .sidebar {
