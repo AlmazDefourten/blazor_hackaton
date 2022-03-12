@@ -29,7 +29,7 @@ a.button:active {
 }
 
 .center{
-    left: 50%;
+    left: 47%;
     margin-right: -50%;
     transform: translate(-10%);
     position: fixed;
@@ -43,8 +43,34 @@ h3.login{
     font-weight: 500;
     line-height: 42px;
 }
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form{
+    height: 680px;
+    width: 600px;
+    background-color: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+.box{
+    display:flex;
+    justify-content:space-between;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
 </style>
-
 <div class="container center">
 <h3 class="login" style="color:white">
     Вы не вошли в аккаунт!
@@ -52,4 +78,17 @@ h3.login{
 <a class="button" href="/authpage" >Вход</a>
 <a class="button" href="/regpage" >Регистрация</a>
 
+</div>
+
+<div class="container box">
+    <form>
+        <label for="name">ФИО:</label>
+        <label for="status">Статус:</label>
+        <label for="description">Описание:</label>
+    </form>
+    <form>
+        <label for="name">ФИО:</label>
+        <label for="status">Должность:</label>
+        <label for="description">Описание:</label>
+    </form>
 </div>

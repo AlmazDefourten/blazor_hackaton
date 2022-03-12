@@ -39,7 +39,6 @@ body {
 @media () {
     .page {
         flex-direction: row;
-
     }
 
     .sidebar {
