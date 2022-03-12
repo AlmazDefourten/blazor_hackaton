@@ -3,11 +3,11 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 
-namespace kai_hack.Models
+namespace Blazor_kai.Models
 {
-    public class HashPassword
+    public static class HashPassword
     {
-        public string GetPasswordHash(string password)
+        public static string GetPasswordHash(string password)
         {
             byte[] salt = new byte[128 / 8];
             using (var rngCsp = new RNGCryptoServiceProvider())

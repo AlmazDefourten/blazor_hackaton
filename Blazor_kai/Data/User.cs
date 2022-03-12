@@ -1,4 +1,4 @@
-﻿namespace kai_hack.Models
+﻿namespace Blazor_kai.Models
 {
     public class User
     {
@@ -18,5 +18,7 @@
         public string Status { get; set; }
 
         public string eMail { get; set; }
+
+        public string Password { get; set; }
     }
 }
