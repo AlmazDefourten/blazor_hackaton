@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Blazor_kai.Models;
+namespace Blazor_kai.Data;
 
 public class ApplicationContext : DbContext
 {
