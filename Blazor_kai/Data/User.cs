@@ -16,7 +16,7 @@
         public int Id { get; set; }
         public string? Name { get; set; }
         public string Status { get; set; } = "sofinder";
-
+        public string? Progress { get; set; } = "sofinder";
         public string eMail { get; set; }
 
         public string Password { get; set; }

@@ -1,11 +1,15 @@
 ﻿using Blazor_kai.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Blazor_kai.Data
 {
     public class HomeController
     {
+
         [HttpPost]
         public void Registration(User user)
         {
@@ -16,6 +20,7 @@ namespace Blazor_kai.Data
                 db.SaveChanges();
             }
         }
+
 
         [HttpGet]
         public bool Login(User user)
