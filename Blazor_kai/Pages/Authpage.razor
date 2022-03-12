@@ -1,7 +1,12 @@
-﻿@page "/regpage"
+﻿@page "/authpage"
+
+@using Blazor_kai.Data
+@inject HomeController Controller
+@inject NavigationManager NavigationManager
+
 
 <style media="screen">
-    *,
+      *,
 *:before,
 *:after{
     padding: 0;
@@ -12,7 +17,7 @@ body{
     background-color: #080710;
 }
 form{
-    height: 680px;
+    height: 520px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -81,23 +86,30 @@ button{
     font-size: 14px;
     font-weight: 300;
 }
-</style>
+
+    </style>
+
 <button class="back" type="button" onclick="history.back();">На главную </button>
-
 <form>
-    <h3>Регистрация</h3>
+    <h3>Авторизация</h3>
 
-    <label for="username">Имя</label>
-    <input type="text" placeholder="Иванов Иван Иванович" id="username">
+    <label for="username">Ваш Email</label>
+    <input type="text" @bind="@email" placeholder="Email" id="username">
 
-    <label for="username">Введите Email</label>
-    <input type="text" placeholder="Email" id="username">
+    <label for="password">Ваш пароль</label>
+    <input type="password" @bind="@password" placeholder="Password" id="password">
 
-    <label for="password">Введите пароль</label>
-    <input type="password" placeholder="Password" id="password">
-
-    <label for="password">Повторите пароль</label>
-    <input type="password" placeholder="Password" id="password">
-
-    <button id="reg_btn">Зарегистрироваться</button>
+    <button id="auth_btn" type="button" @onclick="Login">Авторизоваться</button>
 </form>
+
+@code {
+    string email, password;
+
+    public void Login() {
+        User user = new User { eMail = email, Password = password };
+        bool response = Controller.Login(user);
+        if (response) {
+            NavigationManager.NavigateTo("");
+        }
+    }
+}

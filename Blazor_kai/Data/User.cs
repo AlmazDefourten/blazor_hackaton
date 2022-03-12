@@ -1,4 +1,4 @@
-﻿namespace Blazor_kai.Models
+﻿namespace Blazor_kai.Data
 {
     public class User
     {
@@ -14,8 +14,8 @@
 
         }
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Status { get; set; }
+        public string? Name { get; set; }
+        public string Status { get; set; } = "sofinder";
 
         public string eMail { get; set; }
 

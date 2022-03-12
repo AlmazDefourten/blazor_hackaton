@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Blazor_kai.Controllers
+namespace Blazor_kai.Data
 {
     public class HomeController
     {
@@ -17,14 +17,14 @@ namespace Blazor_kai.Controllers
             }
         }
 
+        [HttpGet]
         public bool Login(User user)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                user.Password = HashPassword.GetPasswordHash(user.Password);
                 foreach (var us in db.Users.ToList())
                 {
-                    if (us.eMail == user.eMail && us.Password == user.Password)
+                    if (HashPassword.IsPasswordsEquals(us.Password, user.Password))
                     {
                         return true;
                     }
