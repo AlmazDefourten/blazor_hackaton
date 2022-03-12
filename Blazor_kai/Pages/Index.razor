@@ -31,23 +31,24 @@ a.button:active {
 .center{
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%)
+    transform: translate(-10%);
+    position: fixed;
+    flex-direction: column;
 }
-form h3{
+h3.login{
     font-family: 'Poppins',sans-serif;
     color: white;
     letter-spacing: 0.5px;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 42px;
-    text-align: center;
 }
 </style>
-<h3 class="color=white">
+
+<div class="container center">
+<h3 class="login" style="color:white">
     Вы не вошли в аккаунт!
 </h3>
-<div class="container center display=flex">
-
 <a class="button" href="/authpage" >Вход</a>
 <a class="button" href="/regpage" >Регистрация</a>
 
