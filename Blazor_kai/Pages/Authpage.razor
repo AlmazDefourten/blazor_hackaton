@@ -100,16 +100,22 @@ button{
     <input type="password" @bind="@password" placeholder="Password" id="password">
 
     <button id="auth_btn" type="button" @onclick="Login">Авторизоваться</button>
+
+    <label>@error</label>
 </form>
 
 @code {
-    string email, password;
+    string email, password, error = "";
 
     public void Login() {
         User user = new User { eMail = email, Password = password };
         bool response = Controller.Login(user);
         if (response) {
+            error = "";
             NavigationManager.NavigateTo("");
+        }
+        else {
+            error = "Неверный логин или пароль";
         }
     }
 }
