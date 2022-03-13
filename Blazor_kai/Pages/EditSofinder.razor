@@ -169,6 +169,7 @@ select::-ms-expand {
         </select>
     </div>
     <button class="btn" type="button" @onclick="Edit" id="auth_btn">Добавить</button>
+</form>
     <MudTimeline>
     @foreach(var h in hiss)
     {
@@ -199,7 +200,6 @@ select::-ms-expand {
     }
     
 </MudTimeline>
-</form>
 
 @code {
     [Parameter]
