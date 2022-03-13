@@ -15,25 +15,24 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: white;
 }
 form{
-    height: 660px;
+    height: 680px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
+    transform: translate(-50%);
+    top: 150%;
     left: 50%;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: black;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -89,11 +88,11 @@ label{
 ::placeholder{
     color: #e5e5e5;
 }
-button{
+.btn{
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
-    color: #080710;
+    background-color: #1b6ec2;
+    color: white;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;
@@ -101,31 +100,73 @@ button{
     cursor: pointer;
 }
 
+.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 57px;
+    padding: 10px 38px 10px 16px;
+    background: #fff url("select-arrows.svg") no-repeat right 16px center;
+    background-size: 10px;
+    transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.custom-select:hover {
+    border: 1px solid #999;
+}
+.custom-select:focus {
+    border: 1px solid #999;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+    outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+    display:none;
+}
+
     </style>
 
 <form>
+
     <h3>Добавление соискателя</h3>
 
-    <label>Имя</label>
-    <input @bind="@user.Name" type="text" placeholder="Иванов Иван Иванович" id="name">
+    <div class="form-floating">
+                <input @bind="@user.Name" id="name" class="form-control" autocomplete="username" aria-required="true" />
+                <label >Имя пользователя</label>
+                <span class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+                <input @bind="@user.eMail" id="email" class="form-control" autocomplete="username" aria-required="true" />
+                <label >Email / Telegram</label>
+                <span class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+                <input @bind="@user.Info" id="description" class="form-control" autocomplete="username" aria-required="true" />
+                <label >Описание</label>
+                <span class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+                <input @bind="@user.Vacansion" id="vacansion" class="form-control" autocomplete="username" aria-required="true" />
+                <label >Вакансия</label>
+                <span class="text-danger"></span>
+    </div>
+    <div class="form-floating">
+                <input id="password" class="form-control" autocomplete="username" aria-required="true" />
+                <label >Пароль пользователя</label>
+                <span class="text-danger"></span>
+    </div>
 
-    <label>Email / Telegram</label>
-    <input @bind="@user.eMail" type="text" placeholder="qwerty@mail.ru" id="email">
-
-    <label>Описание</label>
-    <input @bind="@user.Info" type="text" placeholder="Описание..." id="description">
-
-    <label>Вакансия</label>
-    <input @bind="@user.Vacansion" type="text" placeholder="Ожидаемая вакансия" id="vacansion">
-
-    <label>Статус соискателя:</label>
-    <select @bind="@user.Status">
+    <div>
+        <label>Статус соискателя:</label>
+        <select class="custom-select" @bind="@user.Status">
         <option selected value="sofinder">Кандидат</option>
         <option value="resume">Резюме на рассмотрении</option>
         <option value="interview">Собеседование</option>
         <option value="work">В штате</option>
-   </select>
-    <button type="button" @onclick="Add" id="auth_btn">Добавить</button>
+        </select>
+    </div>
+    <button class="btn" type="button" @onclick="Add" id="auth_btn">Добавить</button>
 
 </form>
 
