@@ -6,30 +6,23 @@
 <PageTitle>Index</PageTitle>
 <style>
 body{
-    background-color: #080710;
+    background-color: white;
 }
+
 
 a.button {
   display: inline-block;
-  color: #d7d7d7;
+  color: black;
   text-decoration: none;
   padding: .5em 2em;
   outline: none;
   border-width: 2px 0;
   border-style: solid none;
-  border-color: #37373e;
+  border-color: #e5e5e5;
   border-radius: 6px;
-  background-color: #37373e;
+  background-color: white;
   transition: 0.2s;
 } 
-a.button:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white; 
-}
-a.button:active {
-    background-color: rgba(255,255,255,0.25);
-    color: white; 
-}
 
 .center{
     left: 47%;
@@ -82,7 +75,7 @@ form{
 </style>
 @if (!@isAutoriz) {
 <div class="container center">
-<h3 class="login" style="color:white">
+<h3 class="login" style="color:black">
     Вы не вошли в аккаунт!
 </h3>
 <a class="button" href="/authpage" >Вход</a>
