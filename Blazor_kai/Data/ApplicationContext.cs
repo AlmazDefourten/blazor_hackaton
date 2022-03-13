@@ -8,7 +8,8 @@ public class ApplicationContext : DbContext
 
     public ApplicationContext()
     {
-        Database.EnsureCreated();
+        Database.EnsureDeleted();
+        //Database.EnsureCreated();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

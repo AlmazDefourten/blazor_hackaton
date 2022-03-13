@@ -1,5 +1,11 @@
 ﻿@page "/addition"
 
+
+@using Blazor_kai.Data;
+@inject HomeController HomeController;
+@inject NavigationManager NavigationManager;
+
+
 <style media="screen">
       *,
 *:before,
@@ -100,18 +106,34 @@ button{
 <form>
     <h3>Добавление соискателя</h3>
 
-    <label >ФИО</label>
-    <input class="name" type="text" placeholder="Иванов Иван Иванович" id="name">
+    <label>Имя</label>
+    <input @bind="@user.Name" type="text" placeholder="Иванов Иван Иванович" id="name">
 
-    <p><label>Статус соискателя:</label>
-   <input class="radio" type="radio" name="status" value="ie"> Рассмотрение резюме<Br>
-   <input class="radio" type="radio" name="status" value="opera"> Назначено интервью<Br>
-   <input class="radio" type="radio" name="status" value="firefox"> Выставлен оффер<Br>
-  </p>
+    <label>Email / Telegram</label>
+    <input @bind="@user.eMail" type="text" placeholder="qwerty@mail.ru" id="email">
 
-    <label >Описание соискателя</label>
-    <input class="description" type="text" placeholder="Описание..." id="description">
+    <label>Описание</label>
+    <input @bind="@user.Info" type="text" placeholder="Описание..." id="description">
 
-    <button id="auth_btn">Добавить</button>
+    <label>Вакансия</label>
+    <input @bind="@user.Vacansion" type="text" placeholder="Ожидаемая вакансия" id="vacansion">
+
+    <label>Статус соискателя:</label>
+    <select @bind="@user.Status">
+        <option selected value="sofinder">Кандидат</option>
+        <option value="resume">Резюме на рассмотрении</option>
+        <option value="interview">Собеседование</option>
+        <option value="work">В штате</option>
+   </select>
+    <button type="button" @onclick="Add" id="auth_btn">Добавить</button>
 
 </form>
+
+@code {
+    User user = new User();
+    public void Add()
+    {
+        HomeController.Registration(user);
+        NavigationManager.NavigateTo("/");
+    }
+}
