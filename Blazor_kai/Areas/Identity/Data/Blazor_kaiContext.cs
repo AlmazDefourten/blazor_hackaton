@@ -9,7 +9,6 @@ public class Blazor_kaiContext : IdentityDbContext<IdentityUser>
     public Blazor_kaiContext(DbContextOptions<Blazor_kaiContext> options)
         : base(options)
     {
-
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

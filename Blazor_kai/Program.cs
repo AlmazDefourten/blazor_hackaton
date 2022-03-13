@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Blazor_kaiContextConnection");builder.Services.AddDbContext<Blazor_kaiContext>(options =>
@@ -10,6 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("Blazor_kaiCont
     .AddEntityFrameworkStores<Blazor_kaiContext>();
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddMudServices();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddAntDesign();
 builder.Services.AddSingleton<WeatherForecastService>();

@@ -24,5 +24,6 @@
         public string? Vacansion { get; set; }
 
         public string? Password { get; set; }
+
     }
 }

@@ -97,6 +97,7 @@ form{
         <label for="description">Описание:</label>
     </form>
     <button @onclick="GetClaimsPrincipalData">Get ClaimsPrincipal Data</button>
+    <button @onclick="GetClaimsPrincipalDatsa">Get ClaimsPrincipal Data</button>
     <p>@_authMessage</p>
 </div>
         }
@@ -122,6 +123,11 @@ form{
         {
             _authMessage = "The user is NOT authenticated.";
         }
+    }
+
+    public void GetClaimsPrincipalDatsa()
+    {
+        _authMessage = "";
     }
 
     protected override async Task OnInitializedAsync()

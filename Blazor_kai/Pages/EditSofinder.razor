@@ -1,11 +1,12 @@
-﻿@page "/addition"
+﻿@page "/edit/{Id}"
 
 
 @using Blazor_kai.Data;
 @inject HomeController HomeController;
 @inject NavigationManager NavigationManager;
-
-
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
 <style media="screen">
       *,
 *:before,
@@ -124,12 +125,13 @@ label{
 select::-ms-expand {
     display:none;
 }
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     </style>
 
 <form>
 
-    <h3>Добавление соискателя</h3>
+    <h3>Редактирование анкеты соискателя</h3>
 
     <div class="form-floating">
                 <input @bind="@user.Name" id="name" class="form-control" autocomplete="username" aria-required="true" />
@@ -166,15 +168,52 @@ select::-ms-expand {
         <option value="work">В штате</option>
         </select>
     </div>
-    <button class="btn" type="button" @onclick="Add" id="auth_btn">Добавить</button>
-
+    <button class="btn" type="button" @onclick="Edit" id="auth_btn">Добавить</button>
+    <MudTimeline>
+    @foreach(var h in hiss)
+    {
+        @if (@h.Record == "sofinder")
+        {
+            <MudTimelineItem>
+                    <MudText>Кандидат @h.Time.Value.ToShortDateString()</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Record == "resume")
+        {
+            <MudTimelineItem>
+                    <MudText>Резюме на рассмотрении @h.Time.Value.ToShortDateString()</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Record == "interview")
+        {
+            <MudTimelineItem Color="@MudBlazor.Color.Primary">
+                    <MudText>Интервьюинг @h.Time.Value.ToShortDateString()</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Record == "work")
+        {
+            <MudTimelineItem>
+                    <MudText Align="@Align.End">>Принят в штат @h.Time.Value.ToShortDateString()</MudText>
+            </MudTimelineItem>
+        }
+    }
+    
+</MudTimeline>
 </form>
 
 @code {
+    [Parameter]
+    public int Id { get; set; }
+    List<History> hiss = null;
     User user = new User();
-    public void Add()
+    protected override async Task OnInitializedAsync() {
+        user = HomeController.GetUser(Id);
+        hiss = HomeController.GetHistory(user);
+
+    }
+    public void Edit()
     {
-        HomeController.Registration(user);
+        HomeController.Edit(user);
         NavigationManager.NavigateTo("/");
     }
 }

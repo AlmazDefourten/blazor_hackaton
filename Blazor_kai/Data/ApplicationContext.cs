@@ -5,11 +5,11 @@ namespace Blazor_kai.Data;
 public class ApplicationContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<History> Historye { get; set; }
 
     public ApplicationContext()
     {
-        Database.EnsureDeleted();
-        //Database.EnsureCreated();
+        Database.EnsureCreated();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
