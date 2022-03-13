@@ -153,12 +153,6 @@ select::-ms-expand {
                 <label >Вакансия</label>
                 <span class="text-danger"></span>
     </div>
-    <div class="form-floating">
-                <input @bind="@user.Password" id="password" class="form-control" autocomplete="username" aria-required="true" />
-                <label >Пароль пользователя</label>
-                <span class="text-danger"></span>
-    </div>
-
     <div>
         <label>Статус соискателя:</label>
         <select class="custom-select" @bind="@user.Status">
@@ -203,11 +197,13 @@ select::-ms-expand {
 
 @code {
     [Parameter]
-    public int Id { get; set; }
+    public string Id { get; set; }
+    public int _Id { get; set; }
     List<History> hiss = null;
     User user = new User();
     protected override async Task OnInitializedAsync() {
-        user = HomeController.GetUser(Id);
+        _Id = Convert.ToInt32(Id);
+        user = HomeController.GetUser(_Id);
         hiss = HomeController.GetHistory(user);
 
     }
@@ -215,5 +211,6 @@ select::-ms-expand {
     {
         HomeController.Edit(user);
         NavigationManager.NavigateTo("/");
+        
     }
 }
