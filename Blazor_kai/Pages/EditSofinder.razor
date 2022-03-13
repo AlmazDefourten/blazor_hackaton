@@ -18,17 +18,19 @@
 body{
     background-color: white;
 }
+.fborder{
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
 form{
     height: 680px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%);
-    top: 150%;
-    left: 50%;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    top: 140%;
+    left: 25%;
     padding: 50px 35px;
 }
 form *{
@@ -129,7 +131,7 @@ select::-ms-expand {
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     </style>
 
-<form>
+<form class="fborder">
 
     <h3>Редактирование анкеты соискателя</h3>
 
@@ -164,6 +166,7 @@ select::-ms-expand {
     </div>
     <button class="btn" type="button" @onclick="Edit" id="auth_btn">Добавить</button>
 </form>
+<form style="left:75%"> 
     <MudTimeline>
     @foreach(var h in hiss)
     {
@@ -194,7 +197,7 @@ select::-ms-expand {
     }
     
 </MudTimeline>
-
+</form>
 @code {
     [Parameter]
     public string Id { get; set; }
