@@ -3,7 +3,7 @@
 }
 
 .top-row {
-    height: 3.5rem;
+    height: 4rem;
     background-color: #FFFFFF;
     box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
     border-bottom: 1px solid #e5e5e5;
@@ -23,6 +23,7 @@
 }
 
 .exit {
+    font-size:1.1rem;
     width: 100px;
     display: inline-block;
     color: black;
@@ -30,5 +31,9 @@
     padding: .5em 2em;
     outline: none;
     transition: 0.2s;
+    border-bottom: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
