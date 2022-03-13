@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System.Security.Claims
+@using Blazor_kai.Data;
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
@@ -111,20 +112,9 @@ form{
 }
 @if(@isAutoriz)
         {
-<div class="container box">
-    <form>
-        <label for="name">ФИО:</label>
-        <label for="status">Статус:</label>
-        <label for="description">Описание:</label>
-    </form>
-    <form>
-        <label for="name">ФИО:</label>
-        <label for="status">Должность:</label>
-        <label for="description">Описание:</label>
-    </form>
-</div>
-        }
         <List></List>
+        }
+        
 @code {
     private string _authMessage;
     public bool isAutoriz = false;

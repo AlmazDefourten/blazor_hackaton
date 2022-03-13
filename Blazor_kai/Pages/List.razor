@@ -1,7 +1,9 @@
 ﻿@page "/list"
-
+@inject HomeController HomeController;
+@inject NavigationManager NavigationManager;
 @using Blazor_kai.Data
 @using AntDesign;
+
 <style>
 .grid-container {
   display: grid;
@@ -47,7 +49,7 @@
 
 <div class="grid-container">
 <Virtualize ItemsProvider="LoadForecasts" Context="user" ItemSize="49">
-    <button class="btn" style="width:90%">
+    <button class="btn" @onclick="@(e => Redir(@user.Id))" style="width:90%">
                 <Card class="grid-item" title="@user.Name" >
                     @user.Id
                     <!-- <div class="close" id="close">X</div> --->
@@ -59,24 +61,21 @@
 
 @code {
     List<User> users = new List<User>();
-    
+
     protected override async Task OnInitializedAsync()
     {
-            for (int i = 0; i < 15; i++) {
-        users.Add(new User { Id = i, Name = "sad", eMail = "dsdf" });
+        users = HomeController.List();
     }
-    }
+
     protected async ValueTask<ItemsProviderResult<User>> LoadForecasts(ItemsProviderRequest request)
     {
 
         return new ItemsProviderResult<User>(users.Skip(request.StartIndex).Take(request.Count), users.Count());
     }
 
-}
-
-<style>
-    .grid-container :first-child{
-        display:none;
+    public void Redir(int _id)
+    {
+        NavigationManager.NavigateTo($@"edit/{_id}");
     }
 
-</style>
+}
