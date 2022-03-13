@@ -1,7 +1,20 @@
-﻿<div class="top-row ps-3 navbar ">
+﻿@inject NavigationManager navman;
+
+<div class="top-row ps-3 navbar ">
 
     <div class="container">
-        <a class="navbar-brand exit" style="width:160px" href="">Blazor_kai</a>
-        <button class="exit">Выход</button>
+        <button class="navbar-brand exit" @onclick="back">Мониторинг кандидатов</button>
+        <button class="exit" style="border-radius: 0" @onclick="red">Выход</button>
     </div>
-</div>
+</div>  
+
+@code {
+    public void red()
+    {
+        navman.NavigateTo("Identity/Account/Logout", true);
+    }
+    public void back()
+    {
+        navman.NavigateTo("/", true);
+    }
+}
