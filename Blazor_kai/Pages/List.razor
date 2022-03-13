@@ -1,0 +1,42 @@
+﻿@page "/list"
+
+@using Blazor_kai.Data
+@using AntDesign;
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #000000;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.13);
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+}
+</style>
+<div class="grid-container">
+<Virtualize ItemsProvider="LoadForecasts" Context="user" ItemSize="10">
+                <Card class="grid-item" title="@user.Name" style="width:200px">
+                    @user.Id
+                </Card>
+            </Virtualize>
+            </div>
+@code {
+    List<User> users = new List<User>();
+    
+    protected override void OnInitialized()
+    {
+            for (int i = 0; i < 1500; i++) {
+        users.Add(new User { Id = i, Name = "sad", eMail = "dsdf" });
+    }
+    }
+    protected async ValueTask<ItemsProviderResult<User>> LoadForecasts(ItemsProviderRequest request)
+    {
+
+        return new ItemsProviderResult<User>(users.Skip(request.StartIndex).Take(request.Count), users.Count());
+    }
+
+}
