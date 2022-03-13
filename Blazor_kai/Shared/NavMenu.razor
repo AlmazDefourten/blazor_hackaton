@@ -4,7 +4,7 @@
 
     <div class="container">
         <button class="navbar-brand exit" style="width:270px" @onclick="back">Мониторинг кандидатов</button>
-        <button class="exit" style="width:400px;margin-left:30%">Добавить нового пользователя</button>
+        <button class="exit" style="width:400px;margin-left:30%" @onclick="Add">Добавить нового пользователя</button>
         <button class="exit" @onclick="red">Выход</button>
     </div>
 </div>  
@@ -17,5 +17,9 @@
     public void back()
     {
         navman.NavigateTo("/", true);
+    }
+    public void Add()
+    {
+        navman.NavigateTo("/addition", true);
     }
 }

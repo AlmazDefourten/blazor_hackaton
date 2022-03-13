@@ -184,14 +184,14 @@ select::-ms-expand {
         }
         @if (@h.Record == "interview")
         {
-            <MudTimelineItem Color="@MudBlazor.Color.Primary">
+            <MudTimelineItem>
                     <MudText>Интервьюинг @h.Time.Value.ToShortDateString()</MudText>
             </MudTimelineItem>
         }
         @if (@h.Record == "work")
         {
-            <MudTimelineItem>
-                    <MudText Align="@Align.End">>Принят в штат @h.Time.Value.ToShortDateString()</MudText>
+            <MudTimelineItem Color=@MudBlazor.Color.Primary>
+                    <MudText> Принят в штат @h.Time.Value.ToShortDateString()</MudText>
             </MudTimelineItem>
         }
     }
@@ -213,7 +213,7 @@ select::-ms-expand {
     public void Edit()
     {
         HomeController.Edit(user);
-        NavigationManager.NavigateTo("/");
+        NavigationManager.NavigateTo($@"/edit/{_Id}", true);
         
     }
 }

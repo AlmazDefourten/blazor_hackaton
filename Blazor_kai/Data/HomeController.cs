@@ -111,7 +111,7 @@ namespace Blazor_kai.Data
             }
         }
 
-        public IEnumerable<User> List()
+        public List<User> List()
         {
             using (ApplicationContext db = new ApplicationContext ())
             {
