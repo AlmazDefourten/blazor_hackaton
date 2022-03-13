@@ -153,7 +153,6 @@ select::-ms-expand {
     <div class="form-floating">
                 <input @bind="@user.Vacansion" id="vacansion" class="form-control" autocomplete="username" aria-required="true" />
                 <label >Вакансия</label>
-                <span class="text-danger"></span>
     </div>
     <div>
         <label>Статус соискателя:</label>
@@ -164,7 +163,7 @@ select::-ms-expand {
         <option value="work">В штате</option>
         </select>
     </div>
-    <button class="btn" type="button" @onclick="Edit" id="auth_btn">Добавить</button>
+    <button class="btn" type="button" @onclick="Edit" id="auth_btn">Сохранить</button>
 </form>
 <form style="left:75%"> 
     <MudTimeline>

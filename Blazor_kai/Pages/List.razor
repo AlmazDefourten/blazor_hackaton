@@ -3,6 +3,9 @@
 @inject NavigationManager NavigationManager;
 @using Blazor_kai.Data
 @using AntDesign;
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
 
 <style>
 .grid-container {
@@ -48,14 +51,37 @@
 </style>
 
 <div class="grid-container">
-<Virtualize ItemsProvider="LoadForecasts" Context="user" ItemSize="49">
-    <button class="btn" @onclick="@(e => Redir(@user.Id))" style="width:90%">
-                <Card class="grid-item" title="@user.Name" >
-                    @user.Id
-                    <!-- <div class="close" id="close">X</div> --->
+    @foreach (var h in users) {
+    <button class="btn" @onclick="@(e => Redir(@h.Id))" style="width:90%">
+                <Card class="grid-item" title="@h.Name" >
+                    @h.Info
+                    @if (@h.Status == "sofinder")
+        {
+            <MudTimelineItem>
+                    <MudText>Кандидат</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Status == "resume")
+        {
+            <MudTimelineItem>
+                    <MudText>Резюме на рассмотрении</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Status == "interview")
+        {
+            <MudTimelineItem>
+                    <MudText>Интервьюинг</MudText>
+            </MudTimelineItem>
+        }
+        @if (@h.Status == "work")
+        {
+            <MudTimelineItem Color=@MudBlazor.Color.Primary>
+                    <MudText> Принят в штат</MudText>
+            </MudTimelineItem>
+        }
                 </Card>
                 </button>
-            </Virtualize>
+    }
             </div>
 
 
@@ -67,11 +93,6 @@
         users = HomeController.List();
     }
 
-    protected async ValueTask<ItemsProviderResult<User>> LoadForecasts(ItemsProviderRequest request)
-    {
-
-        return new ItemsProviderResult<User>(users.Skip(request.StartIndex).Take(request.Count), users.Count());
-    }
 
     public void Redir(int _id)
     {

@@ -1,15 +1,23 @@
 ﻿@inject NavigationManager navman;
-
+@using System.Security.Claims
+@using Blazor_kai.Data;
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
 <div class="top-row ps-3 navbar ">
 
     <div class="container">
         <button class="navbar-brand exit" style="width:270px" @onclick="back">Мониторинг кандидатов</button>
+        @if (isAutoriz)
+        {
         <button class="exit" style="width:400px;margin-left:30%" @onclick="Add">Добавить нового пользователя</button>
-        <button class="exit" @onclick="red">Выход</button>
+        
+            <button class="exit" @onclick="red">Выход</button>
+        } 
     </div>
 </div>  
 
 @code {
+    public bool isAutoriz { get; set; }
     public void red()
     {
         navman.NavigateTo("Identity/Account/Logout", true);
@@ -21,5 +29,11 @@
     public void Add()
     {
         navman.NavigateTo("/addition", true);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        isAutoriz = user.Identity.IsAuthenticated;
     }
 }
