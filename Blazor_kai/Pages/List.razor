@@ -5,31 +5,64 @@
 <style>
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: #000000;
+  grid-template-rows:auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: white;
   padding: 10px;
 }
+
 .grid-item {
-  background-color: rgba(255,255,255,0.13);
-  border: 1px solid rgba(255,255,255,0.13);
-  padding: 10px;
-  font-size: 15px;
-  text-align: center;
+      padding: 10px;
+      font-size: 15px;
+      text-align: center;
 }
+
+.close{
+    float: right;
+    cursor: pointer;
+}
+
+.btn{
+        display:inline-block;
+        padding:15px;
+        margin:20px;
+        border:2px solid black;
+        border-radius:10px;
+        cursor: pointer;
+        -webkit-transition: background  200ms;
+        -moz-transition: background  200ms;
+        -ms-transition: background  200ms;
+        -o-transition: background  200ms;
+        transition: background  200ms;
+        }
+        .btn:hover{
+            background: #8a8888;
+        }
+        .btn:active{
+            background: #787575;
+        }
+
+        
 </style>
+
 <div class="grid-container">
-<Virtualize ItemsProvider="LoadForecasts" Context="user" ItemSize="10">
-                <Card class="grid-item" title="@user.Name" style="width:200px">
+<Virtualize ItemsProvider="LoadForecasts" Context="user" ItemSize="49">
+    <button class="btn" style="width:500px">
+                <Card class="grid-item" title="@user.Name" >
                     @user.Id
+                    <!-- <div class="close" id="close">X</div> --->
                 </Card>
+                </button>
             </Virtualize>
             </div>
+
+
 @code {
     List<User> users = new List<User>();
     
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-            for (int i = 0; i < 1500; i++) {
+            for (int i = 0; i < 15; i++) {
         users.Add(new User { Id = i, Name = "sad", eMail = "dsdf" });
     }
     }

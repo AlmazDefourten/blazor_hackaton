@@ -67,6 +67,32 @@ form{
     margin-bottom: 20px;
 }
 
+.grid-item {
+      padding: 10px;
+      font-size: 15px;
+      text-align: center;
+}
+.btn{
+        display:inline-block;
+        padding:15px;
+        margin:20px;
+        border:2px solid black;
+        border-radius:10px;
+        cursor: pointer;
+        -webkit-transition: background  200ms;
+        -moz-transition: background  200ms;
+        -ms-transition: background  200ms;
+        -o-transition: background  200ms;
+        transition: background  200ms;
+        }
+        .btn:hover{
+            background: #8a8888;
+        }
+        .btn:active{
+            background: #787575;
+        }
+
+
 @@media (max-width:640px){
     .box{
         flex-direction:column;
@@ -96,9 +122,6 @@ form{
         <label for="status">Должность:</label>
         <label for="description">Описание:</label>
     </form>
-    <button @onclick="GetClaimsPrincipalData">Get ClaimsPrincipal Data</button>
-    <button @onclick="GetClaimsPrincipalDatsa">Get ClaimsPrincipal Data</button>
-    <p>@_authMessage</p>
 </div>
         }
         <List></List>
@@ -123,11 +146,6 @@ form{
         {
             _authMessage = "The user is NOT authenticated.";
         }
-    }
-
-    public void GetClaimsPrincipalDatsa()
-    {
-        _authMessage = "";
     }
 
     protected override async Task OnInitializedAsync()
